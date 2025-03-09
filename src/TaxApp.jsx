@@ -11,7 +11,7 @@ function TaxApp () {
         }
 
         const CalculateTax = (income) => {
-            let Tax = ("");
+            let Tax = (0);
             if (income <= 600000) {
                 Tax = 0;
             }
