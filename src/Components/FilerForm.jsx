@@ -17,7 +17,8 @@ const FilerForm = () => {
         <label className="left-align-div">Phone Number</label>
         <input
           className="right-align-div, input-2"
-          type="text"
+          type="number"
+          maxLength="13"
           placeholder="Enter Phone Number"
         />
         <label className="left-align-div">Email Address</label>
