@@ -1,6 +1,6 @@
-body{
+body {
   background-image: linear-gradient(to bottom, #a0b9fc, #f9a0fc);
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 .form-wrapper {
   display: flex;
@@ -9,18 +9,20 @@ body{
   justify-content: center;
   height: 100vh;
   text-align: center;
-  
+}
+.headings {
+  margin-top: -180px;
+  margin-bottom: 100px;
 }
 
-h1{
+h1 {
   color: #575757;
 }
-h4{
-  font-stretch:wider;
+h4 {
+  font-stretch: wider;
   font-weight: lighter;
   color: #575757;
 }
-
 
 .container {
   border: 3px solid white;
@@ -33,7 +35,7 @@ h4{
   box-shadow: 0 0 40px rgba(255, 255, 255, 0.8);
 }
 
-input {
+.input-1 {
   width: 50%;
   background-color: transparent;
   display: inline-block;
@@ -43,34 +45,80 @@ input {
   line-height: 25px;
   padding-left: 8px;
   margin-top: 25px;
-  margin-bottom: 15px
-
+  margin-bottom: 15px;
+  text-align: center;
 }
-input:hover{
+.input-1:hover {
   border-color: #ffa3dc;
-
   width: 95%;
-  transition:  width .3s ease-in-out;
+  transition: width 0.5s ease-in-out;
 }
-input:focus{
+.input-1:focus {
   outline: none;
   border-color: #ff009e;
   width: 95%;
-  transition:  width .3s ease-in-out;
-  transition: line-height .3s ease-in-out;
-
+  transition: width 0.3s ease-in-out;
+  transition: line-height 0.3s ease-in-out;
 }
 
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
+.input-1::-webkit-outer-spin-button,
+.input-1::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+.input-2 {
+  width: 50%;
+  background-color: transparent;
+  display: inline-block;
+  color: #1a1a1a;
+  border-radius: 10px;
+  border: 1px solid #888;
+  line-height: 25px;
+  padding-left: 8px;
+  margin-top: 25px;
+  margin-bottom: 15px;
+  text-align: left;
+  outline: none;
+}
+.input-2:focus {
+  border: 1px solid #ff009e;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+}
 
-.left-align-div, .right-align-div {
+.input-2::-webkit-outer-spin-button,
+.input-2::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.btn-filer {
+  background-color: orange;
+  outline: none;
+  cursor: pointer;
+  border-radius: 40px;
+  padding: 10px;
+  color: #575757;
+  font-weight: bold;
+  border: 1px solid transparent;
+  margin-top: 15px;
+}
+.btn-mail {
+  background-color: orange;
+  outline: none;
+  cursor: pointer;
+  border-radius: 18px;
+  padding: 10px;
+  color: #575757;
+  font-weight: bold;
+  border: 1px solid transparent;
+  margin-top: 15px;
+  margin-left: 15px;
+  margin-right: -70px;
+}
+
+.left-align-div,
+.right-align-div {
   vertical-align: middle;
   display: inline-block;
-  
 }
 
 .left-align-div {
@@ -83,7 +131,8 @@ input::-webkit-inner-spin-button {
   text-align: right;
 }
 
-form .left-align-div, form .right-align-div {
+form .left-align-div,
+form .right-align-div {
   display: inline-block;
   margin-bottom: 10px;
 }
