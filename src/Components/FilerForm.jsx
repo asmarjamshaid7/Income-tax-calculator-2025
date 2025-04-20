@@ -1,39 +1,68 @@
 import React, { useState } from "react";
+import emailjs from "@emailjs/browser";
 
 const FilerForm = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    number: "",
+    email: "",
+    address: "",
+  });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .send(
+        process.env.REACT_APP_EMAILJS_SERVICE_ID,
+        process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
+        formData,
+        process.env.REACT_APP_EMAILJS_USER_ID
+      )
+      .then(() => alert("Message sent successfully!"))
+      .catch(() => alert("Failed to send message"));
+  };
+
   return (
     <div className="form-wrapper">
-      <div className="headings">
-        <h1>Hello</h1>
-        <h4>Hi</h4>
-      </div>
-      <form className="container">
-        <label className="left-align-div"> Name</label>
+      <form onSubmit={handleSubmit}>
         <input
-          className="right-align-div, input-2"
           type="text"
-          placeholder="Enter Name"
+          name="name"
+          value={formData.name}
+          onChange={handleChange}
+          placeholder="Name"
+          required
         />
-        <label className="left-align-div">Phone Number</label>
         <input
-          className="right-align-div, input-2"
-          type="number"
-          maxLength="13"
-          placeholder="Enter Phone Number"
+          type="tel"
+          name="number"
+          value={formData.number}
+          onChange={handleChange}
+          placeholder="Phone Number"
+          required
         />
-        <label className="left-align-div">Email Address</label>
         <input
-          className="right-align-div, input-2"
+          type="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          placeholder="Email"
+          required
+        />
+        <input
           type="text"
-          placeholder="Enter Email Address"
+          name="address"
+          value={formData.address}
+          onChange={handleChange}
+          placeholder="Address"
+          required
         />
-        <label className="left-align-div">Address</label>
-        <input
-          className="right-align-div, input-2"
-          type="text"
-          placeholder="Enter Address"
-        />
-        <input className="btn-mail" type="button" value="Send" />
+        <button type="submit">Send</button>
       </form>
     </div>
   );
