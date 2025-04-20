@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import emailjs from "@emailjs/browser";
 
+emailjs.init(process.env.REACT_APP_EMAILJS_USER_ID);
+
 const FilerForm = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -13,18 +15,28 @@ const FilerForm = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log("Form submitted", formData);
 
-    emailjs
-      .send(
+    try {
+      const response = await emailjs.send(
         process.env.REACT_APP_EMAILJS_SERVICE_ID,
         process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
-        formData,
+        {
+          name: formData.name,
+          number: formData.number,
+          email: formData.email,
+          address: formData.address,
+        },
         process.env.REACT_APP_EMAILJS_USER_ID
-      )
-      .then(() => alert("Message sent successfully!"))
-      .catch(() => alert("Failed to send message"));
+      );
+      console.log("EmailJS response:", response);
+      alert("Message sent successfully!");
+    } catch (error) {
+      console.error("EmailJS error:", error);
+      alert(`Failed to send message: ${error.text}`);
+    }
   };
 
   return (
